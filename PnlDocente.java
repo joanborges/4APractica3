@@ -1,48 +1,50 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PnlDocente extends JPanel {
-
-    private JTextField txtNombre, txtApellido, txtEmail;
-    private JButton btnRegistrar;
+    private JTextField txtNombre;
+    private JTextField txtIdentificacion;
+    private JTextField txtCurso;
+    private JButton btnRegister;
 
     public PnlDocente() {
-        setLayout(new GridLayout(5, 2));
+        setLayout(new GridLayout(4, 2));
 
         JLabel lblNombre = new JLabel("Nombre:");
         txtNombre = new JTextField();
 
-        JLabel lblApellido = new JLabel("Apellido:");
-        txtApellido = new JTextField();
+        JLabel lblIdentificacion = new JLabel("Identificación:");
+        txtIdentificacion = new JTextField();
 
-        JLabel lblEmail = new JLabel("Email:");
-        txtEmail = new JTextField();
+        JLabel lblCurso = new JLabel("Curso:");
+        txtCurso = new JTextField();
 
-        btnRegistrar = new JButton("Registrar Docente");
-        btnRegistrar.addActionListener(new ActionListener() {
+        btnRegister = new JButton("Registrar");
+        btnRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                registrarDocente();
+                registerDocente();
             }
         });
 
         add(lblNombre);
         add(txtNombre);
-        add(lblApellido);
-        add(txtApellido);
-        add(lblEmail);
-        add(txtEmail);
-        add(new JLabel());
-        add(btnRegistrar);
+        add(lblIdentificacion);
+        add(txtIdentificacion);
+        add(lblCurso);
+        add(txtCurso);
+        add(new JLabel()); // empty cell
+        add(btnRegister);
     }
 
-    private void registrarDocente() {
+    private void registerDocente() {
         String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        String email = txtEmail.getText();
+        String identificacion = txtIdentificacion.getText();
+        String curso = txtCurso.getText();
 
-        // Aquí se realizaría la lógica para registrar al docente en la base de datos.
-        JOptionPane.showMessageDialog(this, "Docente registrado: " + nombre + " " + apellido + " - " + email);
+        // Here we can add the registration logic
+        JOptionPane.showMessageDialog(this, "Docente Registrado:\nNombre: " + nombre + "\nIdentificación: " + identificacion + "\nCurso: " + curso);
     }
 }
